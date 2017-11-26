@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './Item.css';
 
 class Item extends Component {
+  handleRemoveClick = () => {
+    const { item, onRemove } = this.props;
+    onRemove(item.id);
+  }
+
+  handleCheckboxChange = () => {
+    const { item, onCheckboxChange } = this.props;
+    onCheckboxChange(item.id);
+  }
+
   render() {
     const { item } = this.props;
     return (
@@ -10,12 +20,12 @@ class Item extends Component {
           <input
             type="checkbox"
             checked={item.packed}
-            onChange={() => {}}
+            onChange={this.handleCheckboxChange}
             id={item.id}
           />
           {item.value}
         </label>
-        <button className="Item-remove" onClick={() => {}}>
+        <button className="Item-remove" onClick={this.handleRemoveClick}>
           Remove
         </button>
       </article>
