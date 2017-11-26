@@ -14,7 +14,7 @@ class Items extends Component {
   };
 
   render() {
-    const { title, items, showPacked, onRemove, onCheckboxChange } = this.props;
+    const { title, items, onRemove, onCheckboxChange } = this.props;
     const { searchTerm } = this.state || '';
     return (
       <section className="Items">
@@ -23,10 +23,7 @@ class Items extends Component {
         </h2>
         <Filter searchTerm={searchTerm} onChange={this.updateSearchTerm} />
         {items
-          .filter(item =>
-            item.value.toLowerCase().includes(searchTerm.toLowerCase())
-              && item.packed === showPacked
-          )
+          .filter(item => item.value.toLowerCase().includes(searchTerm.toLowerCase()))
           .map(item => (
             <Item
               key={item.id}

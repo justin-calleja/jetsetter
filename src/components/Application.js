@@ -75,6 +75,8 @@ class Application extends Component {
 
   render() {
     const { items } = this.state;
+    const packedItems = items.filter(item => item.packed)
+    const unpackedItems = items.filter(item => !item.packed)
 
     return (
       <div className="Application">
@@ -82,15 +84,13 @@ class Application extends Component {
         <CountDown />
         <Items 
           title="Unpacked Items"
-          items={items}
-          showPacked={false}
+          items={unpackedItems}
           onRemove={this.handleRemoveItem}
           onCheckboxChange={this.handleToggleItem}
         />
         <Items
           title="Packed Items"
-          items={items}
-          showPacked={true} 
+          items={packedItems}
           onRemove={this.handleRemoveItem}
           onCheckboxChange={this.handleToggleItem}
         />
